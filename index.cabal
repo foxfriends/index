@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a09b761333af966fd658635b74bc468fe8b0d340c193a5885b6438db79b82fa6
+-- hash: d39f2dfd2e5b0d1dbadfe44650f210580875ef69e40014af86ae14102f7d1bdd
 
 name:           index
 version:        0.1.0.0
@@ -45,7 +45,7 @@ library
     , regex-compat ==0.95.*
   default-language: Haskell2010
 
-executable index-exe
+executable index
   main-is: Main.hs
   other-modules:
       Args
