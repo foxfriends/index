@@ -29,7 +29,7 @@ emptyNote name = Note name [] ("# Tag: " ++ name ++ "\n")
 getNote :: Map String Note -> String -> Note
 getNote m s = fromMaybe (emptyNote s) $ Map.lookup s m
 
-appendNote (Note n t b) a = (Note n t (b ++ a))
+appendNote (Note n t b) a = Note n t (b ++ a)
 
 tagList :: [String] -> String
 tagList = List.unlines . fmap listLinkItem
@@ -37,7 +37,7 @@ tagList = List.unlines . fmap listLinkItem
 
 referencedByString :: [String] -> String
 referencedByString [] = ""
-referencedByString names = "\nReferenced by:\n" ++ tagList names
+referencedByString names = "\n---\n\nReferenced by:\n" ++ tagList names
 
 addReferencers :: Map String [Note] -> Note -> Note
 addReferencers m note@(Note "__index" _ _) = appendNote note ("\n" ++ tagList indexReferences)
