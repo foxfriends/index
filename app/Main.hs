@@ -40,7 +40,7 @@ referencedByString [] = ""
 referencedByString names = "\nReferenced by:\n" ++ tagList names
 
 addReferencers :: Map String [Note] -> Note -> Note
-addReferencers m note@(Note "__index" _ _) = appendNote note (referencedByString indexReferences)
+addReferencers m note@(Note "__index" _ _) = appendNote note ("\n" ++ tagList indexReferences)
     where
         indexReferences = (fmap fst . sortOn (Down . snd) . Map.toList . fmap length) m
 addReferencers m note = appendNote note (referencedByString referencedBy)
