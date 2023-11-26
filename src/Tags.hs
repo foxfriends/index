@@ -22,11 +22,11 @@ putTag str (tagify -> tag) = do
 replace reg rep s = subRegex reg s rep
 
 slugSpaces = replace (mkRegex "[ ]+") "-"
-removeExtra = replace (mkRegex "[^ 0-9A-Za-z_-]") ""
+removeExtra = replace (mkRegex "[^ 0-9A-Za-z_-]") " "
 strip = f . f where f = reverse . dropWhile isSpace
 
 tagify :: String -> String
-tagify =  fmap toLower . slugSpaces . removeExtra . strip
+tagify =  fmap toLower . slugSpaces . strip. removeExtra
 
 fromPair :: (t, t) -> [t]
 fromPair (a, b) = [a, b]
