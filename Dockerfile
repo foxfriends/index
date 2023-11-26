@@ -1,9 +1,9 @@
-FROM haskell:9.8.1
+FROM haskell:8.10.7
 
 WORKDIR /app
 RUN cabal update
 
-COPY index.cabal package.yaml Setup.hs ./
+COPY index.cabal ./
 
 RUN cabal build --only-dependencies -j4
 
